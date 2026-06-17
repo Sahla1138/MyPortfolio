@@ -8,6 +8,7 @@ const nextConfig = {
     // Example placeholders:
     // serverActions: true,
   }
+  
 };
 
 export default nextConfig;
