@@ -51,7 +51,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" id="contact" aria-labelledby="contact-heading">
       <h2 className="text-2xl font-semibold">Contact Us</h2>
       <p>Send an enquiry. This posts to the multi-tenant contact endpoint and will eventually forward to Raisuite ERP.</p>
       {status === 'success' && <Alert type="success" message="Enquiry submitted successfully." />}
