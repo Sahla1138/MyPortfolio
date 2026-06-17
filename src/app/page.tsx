@@ -46,14 +46,16 @@ export default function HomePage() {
 <div className="col-span-2 relative flex items-center justify-center">
   <div className="absolute inset-0 bg-cyan-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
 
- <img
-  src="profile.webp"
+<Image
+  src="/profile.webp"
   alt="Profile"
-  className="relative h-56 w-56 rounded-full object-cover border-4 border-cyan-400 animate-pulse"
+  width={224}
+  height={224}
+  className="relative rounded-full object-cover border-4 border-cyan-400 animate-pulse"
 />
 </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-4">
-          Hi, I'm <span className=" bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">Sahla</span>
+         Hi, I&apos;m <span>Sahla sahanas</span>
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mb-6">
           Frontend Developer passionate about building modern,
