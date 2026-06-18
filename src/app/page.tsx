@@ -45,7 +45,6 @@ const experiences = [
     description: [
       "Developed web applications using Next.js and React.",
       "Built responsive UI with Tailwind CSS.",
-      "Worked with REST APIs and backend integration.",
       "Used Git and GitHub for version control."
     ]
   }
@@ -102,6 +101,24 @@ const experiences = [
           </div>
         </div>
       </section>
+
+       <section id="experience">
+  <h2>Experience</h2>
+
+  {experiences.map((exp, index) => (
+    <div key={index}>
+      <h3>{exp.role}</h3>
+      <p>{exp.company}</p>
+      <p>{exp.duration}</p>
+
+      <ul>
+        {exp.description.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
 
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6 bg-gray-900">
@@ -181,23 +198,7 @@ const experiences = [
         </div>
       </section>
 
-      <section id="experience">
-  <h2>Experience</h2>
-
-  {experiences.map((exp, index) => (
-    <div key={index}>
-      <h3>{exp.role}</h3>
-      <p>{exp.company}</p>
-      <p>{exp.duration}</p>
-
-      <ul>
-        {exp.description.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  ))}
-</section>
+     
 
       {/* Contact Section */}
       <section id="contact1" className="py-20 px-6 bg-gray-900">
