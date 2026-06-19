@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import Link from 'next/link';
 
 export default function HomePage() {
 
@@ -79,9 +80,12 @@ const experiences = [
             View Projects
           </button>
 
-          <button onClick={() => document.getElementById('contact1')?.scrollIntoView({ behavior: 'smooth' })} className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition">
-            Contact Me
-          </button>
+           <Link
+  href="/contact"
+  className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
+>
+  Contact Me
+</Link>
         </div>
       </section>
 
