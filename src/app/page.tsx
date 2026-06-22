@@ -31,10 +31,10 @@ export default function HomePage() {
     github: "https://github.com/Sahla1138/react-vite-tailwind-website",
   },
   {
-    title: "Weather App",
-    description: "Weather forecast app using OpenWeather API.",
-    image: "/weather-app.png",
-    github: "https://github.com/yourusername/weather-app",
+    title: "hospital Website",
+    description: "A modern hospital website built with React and Tailwind CSS.",
+    image: "cityhospital.png",
+    github: "https://github.com/yourusername/hospital-website",
   },
 ];         
 
