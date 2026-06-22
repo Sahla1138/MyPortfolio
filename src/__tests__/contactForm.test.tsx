@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import ContactPage from '@/app/contact/page';
+import ContactPage from '@/app/Contact';
 
 describe('ContactPage form', () => {
   it('shows validation errors if fields empty', async () => {

@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+     
+    output:'export',
+      images: {
+    unoptimized: true,
+  },
+
+   eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: true,
   // TODO: When deploying to Cloudflare Pages + Functions with adapter:
   // Integrate @cloudflare/next-on-pages or confirm direct support.
@@ -8,6 +17,6 @@ const nextConfig = {
     // Example placeholders:
     // serverActions: true,
   }
+  
 };
-
 export default nextConfig;
