@@ -10,7 +10,8 @@ export default function HomePage() {
               "JavaScript",
               "python",
               "React",
-          
+              "Next.js",
+              "Django",
               "Tailwind CSS",
               "Git",
               "GitHub",
@@ -32,7 +33,7 @@ export default function HomePage() {
   },
   {
     title: "hospital Website",
-    description: "A modern hospital website built with React and Tailwind CSS.",
+    description: "A modern hospital website built with python and Django.",
     image: "cityhospital.png",
     github: "https://github.com/yourusername/hospital-website",
   },
@@ -68,7 +69,7 @@ const experiences = [
 />
 </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-4">
-         Hi, I&apos;m <span>Sahla sahanas</span>
+         Hi, I&apos;m <span className=" bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">Sahla sahanas</span>
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mb-6">
           Frontend Developer passionate about building modern,
@@ -91,37 +92,56 @@ const experiences = [
 
       {/* About Section */}
       <section id="about" className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-10">
-            About Me
-          </h2>
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-4xl font-bold text-center mb-10">
+      About Me
+    </h2>
 
-          <div className="bg-gray-900 p-8 rounded-2xl">
-            <p className="text-gray-300 leading-8">
-              I am a web developer specializing in React,
-              Tailwind CSS, and JavaScript. I enjoy creating clean,
-              responsive, and high-performance websites with modern UI.
-            </p>
-          </div>
+    <div className="bg-gray-900 p-8 rounded-2xl space-y-10">
+      {/* About Content */}
+      <div>
+        <p className="text-gray-300 leading-8">
+          I am a web developer specializing in React, Tailwind CSS,
+          Next.js, Django, and JavaScript. I enjoy creating clean,
+          responsive, and high-performance websites with modern UI.
+        </p>
+      </div>
+
+      {/* Experience Content */}
+      <div>
+        <h3 className="text-2xl font-semibold mb-6 text-white">
+          Experience
+        </h3>
+
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              className="border-l-2 border-blue-500 pl-6"
+            >
+              <h4 className="text-xl font-semibold text-white">
+                {exp.role}
+              </h4>
+
+              <p className="text-gray-400">
+                {exp.company}
+              </p>
+
+              <p className="text-sm text-gray-500 mb-3">
+                {exp.duration}
+              </p>
+
+              <ul className="list-disc list-inside text-gray-300 space-y-2">
+                {exp.description.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      </section>
-
-       <section id="experience">
-  <h2>Experience</h2>
-
-  {experiences.map((exp, index) => (
-    <div key={index}>
-      <h3>{exp.role}</h3>
-      <p>{exp.company}</p>
-      <p>{exp.duration}</p>
-
-      <ul>
-        {exp.description.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+      </div>
     </div>
-  ))}
+  </div>
 </section>
 
       {/* Skills Section */}
@@ -202,42 +222,6 @@ const experiences = [
         </div>
       </section>
 
-     
-
-      {/* Contact Section */}
-      <section id="contact1" className="py-20 px-6 bg-gray-900">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
-
-          <p className="text-gray-300 mb-8">
-            Interested in working together? Feel free to reach out.
-          </p>
-
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full p-4 rounded bg-gray-800 border border-gray-700"
-            />
-
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full p-4 rounded bg-gray-800 border border-gray-700"
-            />
-
-            <textarea
-              rows={5}
-              placeholder="Your Message"
-              className="w-full p-4 rounded bg-gray-800 border border-gray-700"
-            ></textarea>
-
-            <button className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:scale-105 transition">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
     </main>
   );
 }

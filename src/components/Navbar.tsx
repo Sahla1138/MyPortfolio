@@ -12,7 +12,6 @@ export default function Navbar() {
   { name: "About", href: "#about", id: "about" },
   { name: "Skills", href: "#skills", id: "skills" },
   { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Contact", href: "#contact", id: "contact" },
   ];
 
   return (
@@ -49,7 +48,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <a
-          href="#contact"
+          href="/contact"
           className="hidden md:block px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium hover:scale-105 transition-all duration-300"
         >
           Hire Me
@@ -80,7 +79,7 @@ export default function Navbar() {
             ))}
 
             <a
-              href="#contact"
+              href="/contact"
               onClick={() => setIsOpen(false)}
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
             >
