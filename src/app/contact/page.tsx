@@ -63,18 +63,18 @@ export default function ContactPage() {
         aria-describedby="form-help"
         noValidate
       >
-        <TextField className="w-full p-4 rounded bg-gray-800 border border-gray-700"
+        <TextField className="w-full p-4 rounded bg-gray-500 border border-gray-700"
           label="Name"
           {...form.register('name')}
           error={form.formState.errors.name?.message}
         />
-        <TextField className="w-full p-4 rounded bg-gray-800 border border-gray-700"
+        <TextField className="w-full p-4 rounded bg-gray-500 border border-gray-700"
           label="Email"
           type="email"
           {...form.register('email')}
           error={form.formState.errors.email?.message}
         />
-        <TextArea className="w-full p-4 rounded bg-gray-800 border border-gray-700"
+        <TextArea className="w-full p-4 rounded bg-gray-500 border border-gray-700"
           label="Message"
           rows={5}
           {...form.register('message')}
