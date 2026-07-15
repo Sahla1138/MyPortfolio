@@ -6,11 +6,13 @@ import TextField from '@/components/form/TextField';
 import TextArea from '@/components/form/TextArea';
 import Button from '@/components/ui/Button';
 import Alert from '@/components/feedback/Alert';
+import { submitContact } from '@/lib/contact';
 import { useState } from 'react';
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is too short'),
   email: z.string().email('Invalid email'),
+  mobile: z.string().min(10, 'Mobile number must be 10 digits').max(10, 'Mobile number must be 10 digits'),
   message: z.string().min(10, 'Message must be at least 10 characters')
 });
 
@@ -22,18 +24,14 @@ export default function ContactPage() {
 
   const form = useForm<ContactValues>({
     resolver: zodResolver(ContactSchema),
-    defaultValues: { name: '', email: '', message: '' }
+    defaultValues: { name: '', email: '', mobile: '', message: '' }
   });
 
   async function onSubmit(values: ContactValues) {
     setStatus('idle');
     setErrorMessage(null);
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify(values)
-      });
+      const res = await submitContact(values);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         setStatus('error');
@@ -45,7 +43,9 @@ export default function ContactPage() {
     } catch (e: unknown) {
       setStatus('error');
       const message = e instanceof Error ? e.message : 'Network error';
-      setErrorMessage(message);
+      setErrorMessage(message.includes('ERR_INTERNET_DISCONNECTED')
+        ? 'The contact request could not reach the Raisuite service because the browser is offline or the network is disconnected.'
+        : message);
     }
   }
 
@@ -74,6 +74,12 @@ export default function ContactPage() {
           {...form.register('email')}
           error={form.formState.errors.email?.message}
         />
+
+         <TextField
+           label="Mobile"
+           {...form.register("mobile")}
+             error={form.formState.errors.mobile?.message}
+                     />
         <TextArea className="w-full p-4 rounded bg-gray-500 border border-gray-700"
           label="Message"
           rows={5}

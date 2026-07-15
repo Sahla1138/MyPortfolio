@@ -61,7 +61,7 @@ const experiences = [
   <div className="absolute inset-0 bg-cyan-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
 
 <Image
-  src="/profile.jpeg"
+  src="/profile .jpeg"
   alt="Profile"
   width={224}
   height={224}
