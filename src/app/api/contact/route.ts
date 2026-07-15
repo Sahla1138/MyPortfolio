@@ -8,6 +8,7 @@ export const runtime = 'edge';
 const ContactSchema = z.object({
   name: z.string().min(2).max(200),
   email: z.string().email(),
+  mobile: z.string().min(10).max(10),
   message: z.string().min(10).max(5000)
 });
 
@@ -44,11 +45,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Captcha failed' }, { status: 403 });
   }
 
-  const { name, email, message } = parsed.data;
+  const { name, email, mobile, message } = parsed.data;
   const payload = {
-    tenantId: env.TENANT_ID,
+    tenant: env.TENANT_ID,
     name,
     email,
+    mobile,
     message,
     meta: {
       ua: req.headers.get('user-agent'),
@@ -56,24 +58,33 @@ export async function POST(req: Request) {
     }
   };
 
-  /*
+  
+  const upstreamUrl = `${env.RAISUITE_API_BASE.replace(/\/$/, '')}/crm/enquiries/`;
+
   try {
-    const upstream = await fetch(`${env.RAISUITE_API_BASE}/enquiry`, {
+    const upstream = await fetch(upstreamUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${env.RAISUITE_API_KEY}`
+        'Accept': 'application/json',
+        "Tenant": env.TENANT_ID
       },
       body: JSON.stringify(payload)
     });
 
     if (!upstream.ok) {
-      return NextResponse.json({ error: 'Upstream error' }, { status: 502 });
+      const responseText = await upstream.text().catch(() => '');
+      console.error('[contact] Upstream error', { status: upstream.status, body: responseText });
+      return NextResponse.json(
+        { error: 'Upstream error', details: responseText || undefined },
+        { status: 502 }
+      );
     }
-  } catch {
+  } catch (error) {
+    console.error('[contact] Network error', error);
     return NextResponse.json({ error: 'Network error' }, { status: 502 });
   }
-  */
+  
 
   console.log('[contact] Received enquiry', payload);
 

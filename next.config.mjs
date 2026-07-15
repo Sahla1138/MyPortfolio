@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-     
-      images: {
+  output: process.env.NEXT_EXPORT === 'true' ? 'export' : undefined,
+  images: {
     unoptimized: true,
   },
-
-   eslint: {
+  eslint: {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: true,
@@ -16,6 +15,5 @@ const nextConfig = {
     // Example placeholders:
     // serverActions: true,
   }
-  
 };
 export default nextConfig;
