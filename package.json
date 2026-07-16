@@ -11,8 +11,7 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "preflight": "node scripts/preflight-env.mjs",
-    "test": "jest --passWithNoTests",
-    "build:pages": "npx @cloudflare/next-on-pages@latest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
