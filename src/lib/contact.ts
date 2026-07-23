@@ -9,8 +9,8 @@ export type ContactPayload = {
 };
 
 export async function submitContact(data: ContactPayload): Promise<Response> {
-  const apiBase = process.env.NEXT_PUBLIC_RAISUITE_API_BASE;
-  const tenant = process.env.NEXT_PUBLIC_TENANT_ID;
+  const apiBase = process.env.RAISUITE_API_BASE;
+  const tenant = process.env.TENANT_ID;
 
   console.log("API Base:", apiBase);
   console.log("Tenant:", tenant);
