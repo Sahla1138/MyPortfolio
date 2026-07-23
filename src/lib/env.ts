@@ -12,10 +12,10 @@ let cached: z.infer<typeof EnvSchema> | null = null;
 export function getEnv() {
   if (cached) return cached;
   const parsed = EnvSchema.safeParse({
-    TENANT_ID: process.env.TENANT_ID,
-    RAISUITE_API_BASE: process.env.RAISUITE_API_BASE,
-    RAISUITE_API_KEY: process.env.RAISUITE_API_KEY,
-    TURNSTILE_SECRET: process.env.TURNSTILE_SECRET
+    TENANT_ID: process.env.NEXT_PUBLIC_TENANT_ID,
+    RAISUITE_API_BASE: process.env.NEXT_PUBLIC_RAISUITE_API_BASE,
+    RAISUITE_API_KEY: process.env.NEXT_PUBLIC_RAISUITE_API_KEY,
+    TURNSTILE_SECRET: process.env.NEXT_PUBLIC_TURNSTILE_SECRET
   });
   if (!parsed.success) {
     console.error(parsed.error.flatten().fieldErrors);

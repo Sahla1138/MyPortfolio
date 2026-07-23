@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "preflight": "node scripts/preflight-env.mjs",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+      "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
