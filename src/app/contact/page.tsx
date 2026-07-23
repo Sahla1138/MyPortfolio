@@ -75,7 +75,7 @@ export default function ContactPage() {
           error={form.formState.errors.email?.message}
         />
 
-         <TextField
+         <TextField  className="w-full p-4 rounded bg-gray-500 border border-gray-700"
            label="Mobile"
            {...form.register("mobile")}
              error={form.formState.errors.mobile?.message}
