@@ -8,38 +8,24 @@ export type ContactPayload = {
   
 };
 
-export async function submitContact(
-  data: ContactPayload
-): Promise<Response> {
+export async function submitContact(data: ContactPayload): Promise<Response> {
+  const apiBase = process.env.NEXT_PUBLIC_RAISUITE_API_BASE;
+  const tenant = process.env.NEXT_PUBLIC_TENANT_ID;
 
-  try {
-    const apiBase = process.env.NEXT_PUBLIC_RAISUITE_API_BASE;
-      const payload = {
-      tenant: Number(process.env.NEXT_PUBLIC_TENANT_ID), // <-- Add tenant here
-      ...data,
-    };
-    
-    
-    
-    const response = await fetch( `${apiBase}/crm/enquiries/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        
-      },
-      body: JSON.stringify(payload),
-    });
+  console.log("API Base:", apiBase);
+  console.log("Tenant:", tenant);
 
-    const result = await response.text();
+  const payload = {
+    tenant: Number(tenant),
+    ...data,
+  };
 
-console.log("Status:", response.status);
-console.log("Response:", result);
-
-    return response;
-  } catch (error) {
-    const message =
-      error instanceof Error ? error.message : "Unknown network error";
-    throw new Error(`Network request failed: ${message}`);
-  }
+  return fetch(`${apiBase}/crm/enquiries/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 }
